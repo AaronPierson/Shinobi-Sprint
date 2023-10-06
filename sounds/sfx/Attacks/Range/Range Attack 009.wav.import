@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chchyyrk3bdoe"
+path="res://.godot/imported/Range Attack 009.wav-8849e5b9ff380dace6ef0e905fe31fd2.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Attacks/Range/Range Attack 009.wav"
+dest_files=["res://.godot/imported/Range Attack 009.wav-8849e5b9ff380dace6ef0e905fe31fd2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2rn1e6qhrfl7"
+path="res://.godot/imported/Blocking Armor 003.wav-7f50d78e2b17095f51fa4962978fb860.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Attacks/Damage and Blocking/Blocking Armor 003.wav"
+dest_files=["res://.godot/imported/Blocking Armor 003.wav-7f50d78e2b17095f51fa4962978fb860.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

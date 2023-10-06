@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bepfrpho7ka3t"
+path="res://.godot/imported/Toon Phrase 006.wav-9987a44bd484247b1ed93853a18abd6d.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Cute/Toon/Toon Phrase 006.wav"
+dest_files=["res://.godot/imported/Toon Phrase 006.wav-9987a44bd484247b1ed93853a18abd6d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

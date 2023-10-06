@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7i8qoha0ig5o"
+path="res://.godot/imported/Mr. Froggy Phrase 005.wav-f46b7884cbd8eaa5b52e116db3ea66b6.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Cute/Mr. Froggy/Mr. Froggy Phrase 005.wav"
+dest_files=["res://.godot/imported/Mr. Froggy Phrase 005.wav-f46b7884cbd8eaa5b52e116db3ea66b6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

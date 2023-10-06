@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1ornrl3jtebs"
+path="res://.godot/imported/Melee Attack 003.wav-acbe99e886748e6ba6031d4a0e4ec6f5.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Attacks/Melee/Melee Attack 003.wav"
+dest_files=["res://.godot/imported/Melee Attack 003.wav-acbe99e886748e6ba6031d4a0e4ec6f5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

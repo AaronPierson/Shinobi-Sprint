@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pwgvle10630p"
+path="res://.godot/imported/Mr. Froggy Pain 005.wav-772833ded53dd9b0a23bb92dc50bed17.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Cute/Mr. Froggy/Mr. Froggy Pain 005.wav"
+dest_files=["res://.godot/imported/Mr. Froggy Pain 005.wav-772833ded53dd9b0a23bb92dc50bed17.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

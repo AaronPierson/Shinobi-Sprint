@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0xclyg5d6cc2"]
+
+[ext_resource type="Theme" uid="uid://qxltg0ijd8vm" path="res://ui/UiTheme.tres" id="1_4fhvc"]
+[ext_resource type="Script" path="res://ui/Pause.gd" id="1_wl55t"]
+[ext_resource type="Texture2D" uid="uid://bhmjw3710icfs" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/background.png" id="2_d5yre"]
+[ext_resource type="Texture2D" uid="uid://ix7su3w4af1d" path="res://assets/Green All Buttons/149.png" id="4_57q5y"]
+[ext_resource type="Texture2D" uid="uid://c80sbl1v70t4y" path="res://assets/Green All Buttons/157.png" id="5_1vmgc"]
+[ext_resource type="Texture2D" uid="uid://db7n17oe7jvd1" path="res://assets/Green All Buttons/150.png" id="6_6q3lt"]
+[ext_resource type="Texture2D" uid="uid://sse5c3vtnkv8" path="res://assets/Green All Buttons/158.png" id="7_33372"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ol5cf"]
+texture = ExtResource("4_57q5y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sm0jy"]
+texture = ExtResource("5_1vmgc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ioav3"]
+texture = ExtResource("6_6q3lt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxx41"]
+texture = ExtResource("7_33372")
+
+[node name="Pause" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4fhvc")
+script = ExtResource("1_wl55t")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d5yre")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -42.0
+offset_right = 23.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "      Pause      "
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ol5cf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sm0jy")
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ioav3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kxx41")
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

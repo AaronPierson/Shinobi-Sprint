@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxwtajty8yh0"
+path="res://.godot/imported/Light Footsteps 004.wav-1760f2ce1b6e2398e2c496e4159f0e39.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/footsteps/Light Footsteps 004.wav"
+dest_files=["res://.godot/imported/Light Footsteps 004.wav-1760f2ce1b6e2398e2c496e4159f0e39.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

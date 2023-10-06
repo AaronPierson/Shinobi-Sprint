@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://qxltg0ijd8vm"]
+
+[ext_resource type="Texture2D" uid="uid://c7d55pki867kk" path="res://assets/Green All Buttons/146.png" id="1_j8qgo"]
+[ext_resource type="Texture2D" uid="uid://6qm66h068335" path="res://assets/Green All Buttons/154.png" id="2_imauq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jer3w"]
+color = Color(0.12549, 0.827451, 0.509804, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fpp8q"]
+texture = ExtResource("1_j8qgo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t12fj"]
+texture = ExtResource("2_imauq")
+
+[resource]
+Button/font_sizes/font_size = 14
+Button/fonts/font = null
+Button/styles/hover = SubResource("StyleBoxLine_jer3w")
+Button/styles/normal = SubResource("StyleBoxTexture_fpp8q")
+Button/styles/pressed = SubResource("StyleBoxTexture_t12fj")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://brichvrpyddl7"]
+
+[ext_resource type="Script" path="res://scenes/SceneManager.gd" id="1_a5i4i"]
+[ext_resource type="PackedScene" uid="uid://dyuhogh5sfbgn" path="res://scenes/entities/player.tscn" id="2_xs6gk"]
+[ext_resource type="AudioStream" uid="uid://dma2dykllih1w" path="res://sounds/music/Victory (RT 3)/Chiptune Victory main.wav" id="3_343by"]
+[ext_resource type="PackedScene" uid="uid://dtmo0tfnfohp0" path="res://ui/ui.tscn" id="4_g3rtf"]
+[ext_resource type="Script" path="res://scenes/SSCamera.gd" id="5_vfu6i"]
+[ext_resource type="AudioStream" uid="uid://c104ebggsqnpy" path="res://sounds/sfx/Environments and Signals/Loser.wav" id="6_pdykc"]
+[ext_resource type="AudioStream" uid="uid://b7b8436rm12yl" path="res://sounds/sfx/Environments and Signals/Fanfare.wav" id="7_jepnu"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kmw6m"]
+a = Vector2(0, -48)
+b = Vector2(0, 61)
+
+[node name="sceneManger" type="Node2D"]
+script = ExtResource("1_a5i4i")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_xs6gk")]
+collision_layer = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_g3rtf")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.5, 3.5)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.69
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("5_vfu6i")
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+position = Vector2(-175, -15)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+scale = Vector2(2, 2)
+shape = SubResource("SegmentShape2D_kmw6m")
+
+[node name="BGPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_343by")
+
+[node name="DieSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pdykc")
+
+[node name="win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_jepnu")
+
+[connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt3mkum407gdn"
+path="res://.godot/imported/Boom Long 002.wav-9eb2f2a84d8734d96123d61bb4463892.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Attacks/Explosions and Booms/Boom Long 002.wav"
+dest_files=["res://.godot/imported/Boom Long 002.wav-9eb2f2a84d8734d96123d61bb4463892.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

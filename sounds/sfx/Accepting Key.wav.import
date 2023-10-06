@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://byaepwmhmxtm1"
+path="res://.godot/imported/Accepting Key.wav-4f72b8f0eea46eab19ed4fa90020dc63.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Accepting Key.wav"
+dest_files=["res://.godot/imported/Accepting Key.wav-4f72b8f0eea46eab19ed4fa90020dc63.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

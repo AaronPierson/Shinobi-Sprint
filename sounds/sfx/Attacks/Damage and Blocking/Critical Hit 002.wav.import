@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcc34fo4wt5ge"
+path="res://.godot/imported/Critical Hit 002.wav-f0b37b9f8d78252e6256c052c2205c8f.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Attacks/Damage and Blocking/Critical Hit 002.wav"
+dest_files=["res://.godot/imported/Critical Hit 002.wav-f0b37b9f8d78252e6256c052c2205c8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

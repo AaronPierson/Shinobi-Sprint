@@ -1,0 +1,134 @@
+[gd_scene load_steps=20 format=3 uid="uid://mlumxxkc5orw"]
+
+[ext_resource type="Texture2D" uid="uid://e4ntpl4s074q" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/coin_anim_strip_6.png" id="1_bojj3"]
+[ext_resource type="Script" path="res://scenes/entities/coin.gd" id="1_u8t4a"]
+[ext_resource type="Texture2D" uid="uid://c148u7mppt068" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/coin_pickup_anim_strip_6.png" id="2_83snb"]
+[ext_resource type="AudioStream" uid="uid://byaepwmhmxtm1" path="res://sounds/sfx/Accepting Key.wav" id="4_6xx38"]
+[ext_resource type="AudioStream" uid="uid://hle123oecw2g" path="res://sounds/sfx/Accepting Perc.wav" id="5_7ivjk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsxb0"]
+atlas = ExtResource("1_bojj3")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g76xk"]
+atlas = ExtResource("1_bojj3")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muep1"]
+atlas = ExtResource("1_bojj3")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbpxe"]
+atlas = ExtResource("1_bojj3")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv4ik"]
+atlas = ExtResource("1_bojj3")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugjui"]
+atlas = ExtResource("1_bojj3")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwlat"]
+atlas = ExtResource("2_83snb")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0osw"]
+atlas = ExtResource("2_83snb")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aldt"]
+atlas = ExtResource("2_83snb")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0l6h"]
+atlas = ExtResource("2_83snb")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i82x3"]
+atlas = ExtResource("2_83snb")
+region = Rect2(32, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jainb"]
+atlas = ExtResource("2_83snb")
+region = Rect2(40, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p388v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsxb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g76xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muep1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbpxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fv4ik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugjui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwlat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0osw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aldt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0l6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i82x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jainb")
+}],
+"loop": true,
+"name": &"pickup",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t5ans"]
+radius = 5.0
+
+[node name="Coin" type="Area2D" groups=["coins"]]
+collision_mask = 2
+script = ExtResource("1_u8t4a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p388v")
+animation = &"pickup"
+autoplay = "default"
+frame_progress = 0.644491
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t5ans")
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6xx38")
+volume_db = 16.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7ivjk")
+volume_db = 24.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

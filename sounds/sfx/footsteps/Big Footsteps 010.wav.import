@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgkqo1u6ledpl"
+path="res://.godot/imported/Big Footsteps 010.wav-05d35be269040e03ea895af041eb4ac1.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/footsteps/Big Footsteps 010.wav"
+dest_files=["res://.godot/imported/Big Footsteps 010.wav-05d35be269040e03ea895af041eb4ac1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dixn8cvpjy45x"
+path="res://.godot/imported/Beetle Sting 003.wav-e024ca8c9a688e0f4ea1671d9f6011d6.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Attacks/Melee/Beetle Sting 003.wav"
+dest_files=["res://.godot/imported/Beetle Sting 003.wav-e024ca8c9a688e0f4ea1671d9f6011d6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

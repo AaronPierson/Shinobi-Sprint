@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5vdf7p1xngg0"
+path="res://.godot/imported/Chiptune Victory Intensity 1.wav-193b07f81ef2d74371a5ec52f96f1814.sample"
+
+[deps]
+
+source_file="res://sounds/music/Victory (RT 3)/Chiptune Victory Intensity 1.wav"
+dest_files=["res://.godot/imported/Chiptune Victory Intensity 1.wav-193b07f81ef2d74371a5ec52f96f1814.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

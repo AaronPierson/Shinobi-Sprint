@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://h0l0wmhach0w"
+path="res://.godot/imported/Mid Footsteps 009.wav-b188f87f9d9021cae9ebeb10b7c3d029.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/footsteps/Mid Footsteps 009.wav"
+dest_files=["res://.godot/imported/Mid Footsteps 009.wav-b188f87f9d9021cae9ebeb10b7c3d029.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
