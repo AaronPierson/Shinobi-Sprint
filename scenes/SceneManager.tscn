@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brichvrpyddl7"]
+[gd_scene load_steps=17 format=3 uid="uid://brichvrpyddl7"]
 
 [ext_resource type="Script" path="res://scenes/SceneManager.gd" id="1_a5i4i"]
 [ext_resource type="PackedScene" uid="uid://dyuhogh5sfbgn" path="res://scenes/entities/player.tscn" id="2_xs6gk"]
@@ -8,10 +8,26 @@
 [ext_resource type="AudioStream" uid="uid://c104ebggsqnpy" path="res://sounds/sfx/Environments and Signals/Loser.wav" id="6_pdykc"]
 [ext_resource type="AudioStream" uid="uid://b7b8436rm12yl" path="res://sounds/sfx/Environments and Signals/Fanfare.wav" id="7_jepnu"]
 [ext_resource type="PackedScene" uid="uid://c0xclyg5d6cc2" path="res://ui/Pause.tscn" id="8_gfukx"]
+[ext_resource type="Script" path="res://Godot Plugins/music/OvaniPlayer.gd" id="9_1f2bx"]
+[ext_resource type="AudioStream" uid="uid://c5vdf7p1xngg0" path="res://sounds/music/Victory (RT 3)/Chiptune Victory Intensity 1.wav" id="10_ydir6"]
+[ext_resource type="AudioStream" uid="uid://bslqh4hmtoqwh" path="res://sounds/music/Victory (RT 3)/Chiptune Victory Intensity 2.wav" id="11_lepu7"]
+[ext_resource type="AudioStream" uid="uid://bp7hc4tvkfb6r" path="res://sounds/music/Victory (RT 3)/Chiptune Victory cut 30.wav" id="12_iuev7"]
+[ext_resource type="AudioStream" uid="uid://yx37i55jobnv" path="res://sounds/music/Victory (RT 3)/Chiptune Victory cut 60.wav" id="13_mhmw1"]
+[ext_resource type="Script" path="res://Godot Plugins/music/OvaniSong.gd" id="14_1tcj0"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kmw6m"]
 a = Vector2(0, -48)
 b = Vector2(0, 61)
+
+[sub_resource type="Resource" id="Resource_jdev2"]
+script = ExtResource("14_1tcj0")
+Intensity1 = ExtResource("10_ydir6")
+Intensity2 = ExtResource("11_lepu7")
+Intensity3 = ExtResource("3_343by")
+Loop30 = ExtResource("12_iuev7")
+Loop60 = ExtResource("13_mhmw1")
+ReverbTail = 3.0
+SongMode = 0
 
 [node name="sceneManger" type="Node2D"]
 process_mode = 3
@@ -58,6 +74,10 @@ stream = ExtResource("7_jepnu")
 [node name="die_animation" type="Timer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="OvaniPlayer" type="Node" parent="."]
+script = ExtResource("9_1f2bx")
+QueuedSongs = Array[ExtResource("14_1tcj0")]([SubResource("Resource_jdev2")])
 
 [connection signal="player_died" from="." to="Camera2D" method="_on_scene_manger_player_died"]
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]

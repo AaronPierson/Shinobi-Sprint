@@ -1,13 +1,31 @@
-extends Node2D
+extends RigidBody2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
-var velocity = Vector2()
-var gravity = 500.0
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity = Vector2(200, -500) # Initial velocity
+	pass
+	# Apply an initial force to the bomb (adjust as needed)
+	#apply_impulse(Vector2.ZERO, Vector2(500, -500))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	velocity.y += gravity * delta
-	position += velocity * delta
+func _on_Bullet_body_entered(body):
+	print("_on_Bullet_body_entered")
+	print(body)
+	if body.is_in_group("Player"):
+		body.queue_free()  # Remove the player
+	queue_free()  # Remove the bomb
+
+
+func _on_expload_timeout():
+	queue_free()
+
+
+func _on_body_entered(body):
+	print("_on_body_entered")
+	print(body)
+	if body.is_in_group("Player"):
+		print("blowup player")
+		animated_sprite_2d.play("default")
+		queue_free()
+	elif body is TileMap:
+		print("The bomb has collided with the world.")
+		animated_sprite_2d.play("default")
+		queue_free()

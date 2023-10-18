@@ -91,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_27yie")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -154,3 +154,7 @@ shape = SubResource("CapsuleShape2D_ww0jt")
 
 [node name="die" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_c0icm")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

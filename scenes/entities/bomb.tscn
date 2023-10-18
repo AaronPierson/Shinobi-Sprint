@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0tmwfmk6181p"]
+[gd_scene load_steps=8 format=3 uid="uid://ceupajvrr17w5"]
 
 [ext_resource type="Script" path="res://scenes/entities/bomb.gd" id="1_1o6ct"]
 [ext_resource type="Texture2D" uid="uid://dpymjqpmy5ads" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/bomb_thrown_anim_strip_3.png" id="1_l22tv"]
@@ -15,7 +15,7 @@ region = Rect2(8, 0, 8, 8)
 atlas = ExtResource("1_l22tv")
 region = Rect2(16, 0, 8, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fpvm7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_abnfa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -27,25 +27,31 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yky5c")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 1.0
+"speed": 2.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7tmgm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlnhk"]
 radius = 4.0
 
-[node name="bomb" type="Node2D"]
+[node name="Bomb" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_1o6ct")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_fpvm7")
-frame_progress = 0.711215
+sprite_frames = SubResource("SpriteFrames_abnfa")
+frame = 2
+frame_progress = 1.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 0
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_7tmgm")
+shape = SubResource("CircleShape2D_dlnhk")
+
+[node name="expload" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="expload" to="." method="_on_expload_timeout"]
