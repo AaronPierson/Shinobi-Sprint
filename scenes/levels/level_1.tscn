@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://6kciu8sn7rhp"]
+[gd_scene load_steps=24 format=3 uid="uid://6kciu8sn7rhp"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_nsx4g"]
 [ext_resource type="Texture2D" uid="uid://by1cah0q7ttyx" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="2_ev2b7"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://6qpdbl0jbn3q" path="res://scenes/entities/enemy/slime.tscn" id="8_jwutp"]
 [ext_resource type="Texture2D" uid="uid://bsfqq1f8iemc4" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/fg_1.png" id="8_v1v6u"]
 [ext_resource type="PackedScene" uid="uid://qvx5tcdebrru" path="res://scenes/entities/enemy/goblin_bomber.tscn" id="8_yi3d6"]
-[ext_resource type="PackedScene" uid="uid://cv681glpaopqi" path="res://scenes/entities/enemy/goblin.tscn" id="9_2faqg"]
 [ext_resource type="PackedScene" uid="uid://mlumxxkc5orw" path="res://scenes/entities/coin.tscn" id="9_fuyit"]
 [ext_resource type="Texture2D" uid="uid://bv83l08ml1ygf" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/select_icon_anim_strip_5.png" id="13_ax5sl"]
 
@@ -782,9 +781,6 @@ texture = ExtResource("8_v1v6u")
 
 [node name="goblin bomber" parent="." instance=ExtResource("8_yi3d6")]
 position = Vector2(1022, 104)
-
-[node name="goblin" parent="." instance=ExtResource("9_2faqg")]
-position = Vector2(3646, 181)
 
 [node name="Coins" type="Node2D" parent="."]
 

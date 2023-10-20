@@ -23,14 +23,11 @@ func throw_projectile():
 	animated_sprite_2d.play("attack")
 	print('throw bomb')
 	var projectile = bomb.instantiate()
-	print(projectile)
 	projectile.global_position = self.global_position
 	projectile.mass = 1  # Adjust as needed
 	projectile.apply_impulse(Vector2(x_range, y_range))  # Apply an initial force
 	animated_sprite_2d.play("idle")
-	print(projectile.global_position)
 	get_parent().add_child(projectile)
-	
 	
 	
 signal enemy_died
@@ -41,3 +38,9 @@ func squash():
 	emit_signal("enemy_died", 150)
 	# Make the player bounce off
 	queue_free()
+
+
+func _on_attack_body_entered(body):
+	if body.is_in_group("Player"):
+		print("player should take damage")
+		body.apply_damage(50)	

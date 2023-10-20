@@ -11,6 +11,7 @@ var is_jumping = false
 @export var coyote_time = 0.1
 @export var bounce_impulse = -200
 @export var bounce_fall_speed = 900  # Adjust this value to change the fall speed after bouncing
+@export var Health = 100
 
 @onready var animation_player = $AnimationPlayer
 @onready var player_sprite_2d = $PlayerSprite2D
@@ -95,8 +96,17 @@ func _physics_process(delta):
 		is_jumping = false
 		velocity.y = JUMP_HOLD_VELOCITY
 
-func apply_damage():
-	print('player got hit')
+signal player_health_update
+func apply_damage(damage):
+	print("player was hit")
+	Health -= damage
+	print(Health)
+	if(Health <= 0):
+		print("kill player")
+		animation_player.play("die")
+		queue_free()
+	emit_signal("player_health_update", Health)
+		
 	
 
 

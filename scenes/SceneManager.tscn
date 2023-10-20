@@ -78,6 +78,7 @@ stream = ExtResource("7_jepnu")
 [node name="OvaniPlayer" type="Node" parent="."]
 script = ExtResource("9_1f2bx")
 QueuedSongs = Array[ExtResource("14_1tcj0")]([SubResource("Resource_jdev2")])
+Intensity = 0.512
 
 [connection signal="player_died" from="." to="Camera2D" method="_on_scene_manger_player_died"]
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]

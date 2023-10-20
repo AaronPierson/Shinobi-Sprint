@@ -6,6 +6,8 @@ class_name SceneManager
 @onready var bg_player = $BGPlayer
 @onready var win_sfx = $winSFX
 @onready var ovani_player = $OvaniPlayer
+@onready var hud = $CanvasLayer/HUD
+
 
 signal toggle_paused(is_paused : bool)
 
@@ -42,7 +44,7 @@ func load_level(level):
 	camera_2d.position.y = player.position.y
 	# Connect the signal after loading the new level
 	current_level.connect("level_changed", Callable(self, "_on_level_changed"))
-	ovani_player
+#	ovani_player.FadeVolume(-80, 5);
 	# Get a reference to the HUD node
 	var hud = get_node("CanvasLayer/HUD")
 	# Connect coin_collected signal from each coin to _on_coin_collected method in HUD
@@ -50,8 +52,9 @@ func load_level(level):
 		coin.connect("coin_collected", Callable(hud, "_on_coin_collected"))
 	for enemy in current_level.get_tree().get_nodes_in_group("Enemy"):
 		enemy.connect("enemy_died", Callable(hud, "_on_enemy_death"))
-		
-	
+
+		player.connect("player_health_update", Callable(hud, "_update_health"))
+
 signal player_died()	
 
 func _input(event : InputEvent):
@@ -73,8 +76,13 @@ func _on_level_changed(current_level_name):
 	match current_level_name:
 		"Level1":
 			next_level_name = 2
+			ovani_player.Intensity = 0
 		"Level2":
 			next_level_name = 1
+			ovani_player.Intensity = .5
+		"Level3":
+			next_level_name = 1
+			ovani_player.Intensity = 1
 		_:
 			return
 	load_level(levels[next_level_name])

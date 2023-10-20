@@ -1,8 +1,6 @@
 extends CharacterBody2D
 @onready var die = $die
 
-
-
 const SPEED = 50
 const JUMP_VELOCITY = -100
 

@@ -27,7 +27,7 @@ func _physics_process(delta):
 func _on_attack_body_entered(body):
 	if body.is_in_group("Player"):
 		print("player should die")
-		body.apply_damage()
+		body.apply_damage(50)
 
 signal enemy_died
 func squash():

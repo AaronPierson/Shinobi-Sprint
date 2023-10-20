@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://qvx5tcdebrru"]
+[gd_scene load_steps=25 format=3 uid="uid://qvx5tcdebrru"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy/goblin_bomber.gd" id="1_jhqwu"]
 [ext_resource type="Texture2D" uid="uid://ca5oiqqt0716q" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/bomber goblin/bomber_goblin_attack_anim_strip_6.png" id="1_kwbmj"]
@@ -140,6 +140,9 @@ animations = [{
 radius = 5.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8vvv"]
+size = Vector2(15, 9)
+
 [node name="goblin bomber" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_jhqwu")
 
@@ -149,6 +152,7 @@ animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_ww0jt")
 
@@ -158,3 +162,13 @@ stream = ExtResource("4_c0icm")
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_o8vvv")
+
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

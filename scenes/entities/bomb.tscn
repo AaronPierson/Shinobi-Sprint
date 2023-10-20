@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceupajvrr17w5"]
+[gd_scene load_steps=9 format=3 uid="uid://ceupajvrr17w5"]
 
 [ext_resource type="Script" path="res://scenes/entities/bomb.gd" id="1_1o6ct"]
 [ext_resource type="Texture2D" uid="uid://dpymjqpmy5ads" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/bomb_thrown_anim_strip_3.png" id="1_l22tv"]
@@ -33,11 +33,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dlnhk"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70xwt"]
 radius = 4.0
 
 [node name="Bomb" type="RigidBody2D"]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_1o6ct")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,5 +56,13 @@ shape = SubResource("CircleShape2D_dlnhk")
 wait_time = 1.5
 autostart = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_70xwt")
+
 [connection signal="timeout" from="expload" to="." method="_on_expload_timeout"]
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
