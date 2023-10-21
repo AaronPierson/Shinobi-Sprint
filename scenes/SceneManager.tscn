@@ -73,13 +73,13 @@ stream = ExtResource("7_jepnu")
 
 [node name="die_animation" type="Timer" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Reset_Level_Timer" type="Timer" parent="."]
 
 [node name="OvaniPlayer" type="Node" parent="."]
 script = ExtResource("9_1f2bx")
 QueuedSongs = Array[ExtResource("14_1tcj0")]([SubResource("Resource_jdev2")])
 Intensity = 0.512
 
-[connection signal="player_died" from="." to="Camera2D" method="_on_scene_manger_player_died"]
+[connection signal="player_died_reload" from="Player" to="." method="_on_player_player_died_reload"]
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Reset_Level_Timer" to="." method="_on_reset_level_timer_timeout"]

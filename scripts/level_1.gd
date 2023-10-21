@@ -12,7 +12,7 @@ func _on_area_2d_body_entered(body):
 	print("Player died")
 	if body.is_in_group("Player"):
 		print("kill player")
-		emit_signal("player_died")
+		emit_signal("player_died", body)
 
 func _on_next_level_body_entered(body):
 	print("next level")

@@ -96,6 +96,7 @@ func _physics_process(delta):
 		is_jumping = false
 		velocity.y = JUMP_HOLD_VELOCITY
 
+signal player_died_reload()	
 signal player_health_update
 func apply_damage(damage):
 	print("player was hit")
@@ -105,6 +106,7 @@ func apply_damage(damage):
 		print("kill player")
 		animation_player.play("die")
 		queue_free()
+		emit_signal("player_died_reload")
 	emit_signal("player_health_update", Health)
 		
 	

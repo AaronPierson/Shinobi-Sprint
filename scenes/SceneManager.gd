@@ -2,12 +2,12 @@ extends Node2D
 class_name SceneManager
 @onready var camera_2d = $Camera2D
 @onready var die_sfx = $DieSFX
-@onready var timer = $Timer
 @onready var bg_player = $BGPlayer
 @onready var win_sfx = $winSFX
 @onready var ovani_player = $OvaniPlayer
 @onready var hud = $CanvasLayer/HUD
-
+@onready var player = $Player
+@onready var reset_level_timer = $Reset_Level_Timer
 
 signal toggle_paused(is_paused : bool)
 
@@ -16,7 +16,7 @@ var levels = {
 	2: preload("res://scenes/levels/level_2.tscn"),
 }
 var current_level = null
-@onready var player = $Player
+
 
 var game_paused : bool = false:
 	get:
@@ -52,10 +52,11 @@ func load_level(level):
 		coin.connect("coin_collected", Callable(hud, "_on_coin_collected"))
 	for enemy in current_level.get_tree().get_nodes_in_group("Enemy"):
 		enemy.connect("enemy_died", Callable(hud, "_on_enemy_death"))
+		
+	player.connect("player_health_update", Callable(hud, "_update_health"))
+	current_level.connect("player_died", Callable(self, "_on_area_2d_body_entered"))
 
-		player.connect("player_health_update", Callable(hud, "_update_health"))
 
-signal player_died()	
 
 func _input(event : InputEvent):
 	if(event.is_action_released("ui_cancel") or event.is_action_pressed("Pause")):
@@ -64,10 +65,9 @@ func _input(event : InputEvent):
 #for camrare out of bounds
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		emit_signal("player_died")
 		die_sfx.play()
 		body.animation_player.play("die")
-		timer.start(2.5)
+		reset_level_timer.start(2.5)
 		body.queue_free()
 	
 func _on_level_changed(current_level_name):
@@ -87,5 +87,11 @@ func _on_level_changed(current_level_name):
 			return
 	load_level(levels[next_level_name])
 
-func _on_timer_timeout():
+
+func _on_player_player_died_reload():
+	die_sfx.play()
+	reset_level_timer.start(2.5)
+
+
+func _on_reset_level_timer_timeout():
 	get_tree().reload_current_scene()
