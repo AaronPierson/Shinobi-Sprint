@@ -14,6 +14,8 @@ signal toggle_paused(is_paused : bool)
 var levels = {
 	1: preload("res://scenes/levels/level_1.tscn"),
 	2: preload("res://scenes/levels/level_2.tscn"),
+	3: preload(("res://scenes/levels/level_3.tscn")
+	)
 }
 var current_level = null
 
@@ -78,7 +80,7 @@ func _on_level_changed(current_level_name):
 			next_level_name = 2
 			ovani_player.Intensity = 0
 		"Level2":
-			next_level_name = 1
+			next_level_name = 3
 			ovani_player.Intensity = .5
 		"Level3":
 			next_level_name = 1

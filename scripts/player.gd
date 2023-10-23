@@ -60,7 +60,6 @@ func _physics_process(delta):
 		if (collision.get_collider() == null):
 			continue
 
-
 		# If the collider is with a 
 		if collision.get_collider().is_in_group("Enemy"):
 			var Enemy = collision.get_collider()
@@ -71,6 +70,8 @@ func _physics_process(delta):
 				jump_count = 0
 				velocity.y = bounce_impulse
 				gravity = bounce_fall_speed
+		elif collision.get_collider().is_in_group("Traps"):
+			print("you landed on a trap")
 
 
 	move_and_slide()
