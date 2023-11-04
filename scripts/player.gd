@@ -17,85 +17,87 @@ var is_jumping = false
 @onready var player_sprite_2d = $PlayerSprite2D
 @onready var camera_2d = $"../Camera2D"
 @onready var jump_sound = $Jump_sound
+@onready var die_sound = $die_sound
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var is_alive = true
 
 func _ready():
 	print("ready")
 
 func _physics_process(delta):
+	if is_alive:
 	# Add the gravity.
-	if not is_on_floor():
-		coyote_timer -= delta
-		if velocity.y < 0:
-			velocity.y += gravity * delta
+		if not is_on_floor():
+			coyote_timer -= delta
+			if velocity.y < 0:
+				velocity.y += gravity * delta
+			else:
+				velocity.y += gravity * 2.2 * delta
+
+		# Player Movement
+		var direction = Input.get_axis("move_left", "move_right")
+		if direction:
+			velocity.x = direction * SPEED
 		else:
-			velocity.y += gravity * 2.2 * delta
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# Player Movement
-	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if velocity.x != 0 and is_on_floor():
+			animation_player.play("run")
+		else:
+			animation_player.play("idle")
 
-	if velocity.x != 0 and is_on_floor():
-		animation_player.play("run")
-	else:
-		animation_player.play("idle")
-
-	if velocity.x >= 0:
-		player_sprite_2d.flip_h = false
-	else:
-		player_sprite_2d.flip_h = true
+		if velocity.x >= 0:
+			player_sprite_2d.flip_h = false
+		else:
+			player_sprite_2d.flip_h = true
 
 
-	# Iterate through all collisions that occurred this frame
-	for index in range(get_slide_collision_count()):
-		# We get one of the collisions with the player
-		var collision = get_slide_collision(index)
+		# Iterate through all collisions that occurred this frame
+		for index in range(get_slide_collision_count()):
+			# We get one of the collisions with the player
+			var collision = get_slide_collision(index)
 
-		# If the collision is with ground
-		if (collision.get_collider() == null):
-			continue
+			# If the collision is with ground
+			if (collision.get_collider() == null):
+				continue
 
-		# If the collider is with a 
-		if collision.get_collider().is_in_group("Enemy"):
-			var Enemy = collision.get_collider()
-		# we check that we are hitting it from above.
-			if Vector2.UP.dot(collision.get_normal()) > 0.1:
-		# If so, we squash it and bounce.
-				Enemy.squash()
-				jump_count = 0
-				velocity.y = bounce_impulse
-				gravity = bounce_fall_speed
-		elif collision.get_collider().is_in_group("Traps"):
-			print("you landed on a trap")
+			# If the collider is with a 
+			if collision.get_collider().is_in_group("Enemy"):
+				var Enemy = collision.get_collider()
+			# we check that we are hitting it from above.
+				if Vector2.UP.dot(collision.get_normal()) > 0.1:
+			# If so, we squash it and bounce.
+					Enemy.squash()
+					jump_count = 0
+					velocity.y = bounce_impulse
+					gravity = bounce_fall_speed
+			elif collision.get_collider().is_in_group("Traps"):
+				print("you landed on a trap")
 
+		move_and_slide()
 
-	move_and_slide()
+		# Handle Jump.
+		if is_on_floor():
+			var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+			jump_count = 0
+			coyote_timer = coyote_time
+		if Input.is_action_just_pressed("jump") and coyote_timer > 0:
+			jump_count += 1
+			animation_player.play("jump_up")
+			is_jumping = true   # Set is_jumping to true here
+			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
+		elif not is_on_floor() and jump_count < 2 and Input.is_action_just_pressed("jump"):
+			jump_count += 1
+			animation_player.play("double_jump")
+			velocity.y = JUMP_VELOCITY + 35
+			jump_sound.play()
 
-	# Handle Jump.
-	if is_on_floor():
-		var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-		jump_count = 0
-		coyote_timer = coyote_time
-	if Input.is_action_just_pressed("jump") and coyote_timer > 0:
-		jump_count += 1
-		animation_player.play("jump_up")
-		is_jumping = true   # Set is_jumping to true here
-		velocity.y = JUMP_VELOCITY
-		jump_sound.play()
-	elif not is_on_floor() and jump_count < 2 and Input.is_action_just_pressed("jump"):
-		jump_count += 1
-		animation_player.play("double_jump")
-		velocity.y = JUMP_VELOCITY + 35
-		jump_sound.play()
-
-	if is_jumping and Input.is_action_just_released("jump") and velocity.y < JUMP_HOLD_VELOCITY:
-		is_jumping = false
-		velocity.y = JUMP_HOLD_VELOCITY
+		if is_jumping and Input.is_action_just_released("jump") and velocity.y < JUMP_HOLD_VELOCITY:
+			is_jumping = false
+			velocity.y = JUMP_HOLD_VELOCITY
 
 signal player_died_reload()	
 signal player_health_update
@@ -105,13 +107,13 @@ func apply_damage(damage):
 	print(Health)
 	if(Health <= 0):
 		print("kill player")
+		is_alive = false
+		die_sound.play()
 		animation_player.play("die")
+		await animation_player.animation_finished
 		queue_free()
 		emit_signal("player_died_reload")
-	emit_signal("player_health_update", Health)
+	else:
+		emit_signal("player_health_update", Health)
 		
 	
-
-
-func _on_animation_player_animation_finished(anim_name):
-	pass # Replace with function body.

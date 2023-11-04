@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://6kciu8sn7rhp"]
+[gd_scene load_steps=30 format=3 uid="uid://6kciu8sn7rhp"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_nsx4g"]
 [ext_resource type="Texture2D" uid="uid://by1cah0q7ttyx" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="2_ev2b7"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bjdpwixcd50ye" path="res://scenes/entities/spike_trap.tscn" id="12_4fvbu"]
 [ext_resource type="Texture2D" uid="uid://bv83l08ml1ygf" path="res://assets/platformer_metroidvania asset pack v1.01/hud elements/select_icon_anim_strip_5.png" id="13_ax5sl"]
 [ext_resource type="Texture2D" uid="uid://q603gy4dygex" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/wooden_plate.png" id="13_edqwf"]
-[ext_resource type="PackedScene" uid="uid://b5a12bkhx5mxh" path="res://scenes/entities/jump_orb.tscn" id="13_ox567"]
 [ext_resource type="Texture2D" uid="uid://bo18xnf8w6b66" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/arrow_plate_right.png" id="14_dep0h"]
 [ext_resource type="Texture2D" uid="uid://c0oq6775gdmop" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/bigflowers_props.png" id="15_dlxc1"]
 [ext_resource type="Texture2D" uid="uid://40me7cjy0t1y" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/flowers_props.png" id="16_0s182"]
@@ -872,9 +871,6 @@ position = Vector2(1368, 172)
 [node name="SpikeTrap4" parent="Traps" instance=ExtResource("12_4fvbu")]
 z_index = -1
 position = Vector2(1384, 172)
-
-[node name="JumpOrb" parent="." instance=ExtResource("13_ox567")]
-position = Vector2(319, 167)
 
 [node name="misc" type="Node" parent="."]
 

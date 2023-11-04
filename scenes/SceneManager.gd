@@ -88,10 +88,8 @@ func _on_level_changed(current_level_name):
 		_:
 			return
 	load_level(levels[next_level_name])
-
-
 func _on_player_player_died_reload():
-	die_sfx.play()
+#	die_sfx.play()
 	reset_level_timer.start(2.5)
 
 
