@@ -56,13 +56,8 @@ text = "Shinobi Sprint"
 layout_mode = 2
 text = "Play"
 
-[node name="LevelSelect" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Levels"
-
 [node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/LevelSelect" to="." method="_on_level_select_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

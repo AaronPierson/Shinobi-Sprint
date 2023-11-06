@@ -67,13 +67,19 @@ func _input(event : InputEvent):
 #for camrare out of bounds
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
+		camera_2d.speed = 0
+		body.is_alive = false
+		reset_level_timer.start(2.5)
 		die_sfx.play()
 		body.animation_player.play("die")
-		reset_level_timer.start(2.5)
+		await body.animation_player.animation_finished
 		body.queue_free()
 	
 func _on_level_changed(current_level_name):
 	var next_level_name
+	#bug update ui with new health not working
+	hud._update_health(100)
+	player.Health = 100
 	print(current_level_name)
 	match current_level_name:
 		"Level1":
@@ -88,10 +94,15 @@ func _on_level_changed(current_level_name):
 		_:
 			return
 	load_level(levels[next_level_name])
+	
 func _on_player_player_died_reload():
-#	die_sfx.play()
 	reset_level_timer.start(2.5)
-
+	die_sfx.play()
+	camera_2d.speed = 0
+	ovani_player.Volume = -10
+	player.animation_player.play("die")
+	await player.animation_player.animation_finished
+	player.queue_free()
 
 func _on_reset_level_timer_timeout():
 	get_tree().reload_current_scene()

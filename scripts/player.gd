@@ -1,5 +1,15 @@
 extends CharacterBody2D
 
+enum State {
+	IDLE,
+	RUNNING,
+	JUMPING,
+	ATTACKING,
+	DYING
+}
+
+var state = State.IDLE
+
 const SPEED = 100.0
 const JUMP_VELOCITY = -225.0
 const JUMP_HOLD_VELOCITY = -60.0
@@ -23,9 +33,6 @@ var is_jumping = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_alive = true
 
-func _ready():
-	print("ready")
-
 func _physics_process(delta):
 	if is_alive:
 	# Add the gravity.
@@ -36,47 +43,26 @@ func _physics_process(delta):
 			else:
 				velocity.y += gravity * 2.2 * delta
 
-		# Player Movement
-		var direction = Input.get_axis("move_left", "move_right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-
-		if velocity.x != 0 and is_on_floor():
-			animation_player.play("run")
-		else:
-			animation_player.play("idle")
-
-		if velocity.x >= 0:
-			player_sprite_2d.flip_h = false
-		else:
-			player_sprite_2d.flip_h = true
-
-
-		# Iterate through all collisions that occurred this frame
-		for index in range(get_slide_collision_count()):
-			# We get one of the collisions with the player
-			var collision = get_slide_collision(index)
-
-			# If the collision is with ground
-			if (collision.get_collider() == null):
-				continue
-
-			# If the collider is with a 
-			if collision.get_collider().is_in_group("Enemy"):
-				var Enemy = collision.get_collider()
-			# we check that we are hitting it from above.
-				if Vector2.UP.dot(collision.get_normal()) > 0.1:
-			# If so, we squash it and bounce.
-					Enemy.squash()
-					jump_count = 0
-					velocity.y = bounce_impulse
-					gravity = bounce_fall_speed
-			elif collision.get_collider().is_in_group("Traps"):
-				print("you landed on a trap")
-
-		move_and_slide()
+		match state:
+			State.IDLE:
+				animation_player.play("idle")
+				if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+					print("idle -> running")
+					state = State.RUNNING
+			State.RUNNING:		
+			# Player Movement
+				var direction = Input.get_axis("move_left", "move_right")
+				if direction != 0:
+					velocity.x = direction * SPEED
+					animation_player.play("run")
+					if velocity.x >= 0:
+						player_sprite_2d.flip_h = false
+					else:
+						player_sprite_2d.flip_h = true
+				else:
+					velocity.x = move_toward(velocity.x, 0, SPEED)
+					print("running -> idle")
+					state = State.IDLE
 
 		# Handle Jump.
 		if is_on_floor():
@@ -94,10 +80,31 @@ func _physics_process(delta):
 			animation_player.play("double_jump")
 			velocity.y = JUMP_VELOCITY + 35
 			jump_sound.play()
-
 		if is_jumping and Input.is_action_just_released("jump") and velocity.y < JUMP_HOLD_VELOCITY:
 			is_jumping = false
-			velocity.y = JUMP_HOLD_VELOCITY
+			velocity.y = JUMP_HOLD_VELOCITY	
+
+
+		# Iterate through all collisions that occurred this frame
+		for index in range(get_slide_collision_count()):
+			# We get one of the collisions with the player
+			var collision = get_slide_collision(index)
+			# If the collision is with ground
+			if (collision.get_collider() == null):
+				continue
+			# If the collider is with a 
+			if collision.get_collider().is_in_group("Enemy"):
+				var Enemy = collision.get_collider()
+			# we check that we are hitting it from above.
+				if Vector2.UP.dot(collision.get_normal()) > 0.1:
+			# If so, we squash it and bounce.
+					Enemy.squash()
+					jump_count = 0
+					velocity.y = bounce_impulse
+					gravity = bounce_fall_speed
+			elif collision.get_collider().is_in_group("Traps"):
+				print("you landed on a trap")
+		move_and_slide()
 
 signal player_died_reload()	
 signal player_health_update
@@ -108,12 +115,6 @@ func apply_damage(damage):
 	if(Health <= 0):
 		print("kill player")
 		is_alive = false
-		die_sound.play()
-		animation_player.play("die")
-		await animation_player.animation_finished
-		queue_free()
 		emit_signal("player_died_reload")
 	else:
 		emit_signal("player_health_update", Health)
-		
-	
