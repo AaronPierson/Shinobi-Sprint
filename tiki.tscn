@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://beij3yxvwrivq"]
+
+[ext_resource type="Texture2D" uid="uid://bl1llu3avkrxi" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/tiki_torch_props_strip_12.png" id="1_pt2xg"]
+[ext_resource type="Texture2D" uid="uid://b63fa5qvuv3fc" path="res://assets/light.png" id="2_bg1m3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh7wj"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(0, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7u8w"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(8, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ni56"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(16, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osyut"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(24, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oigmx"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(32, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_theio"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(40, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc4qf"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(48, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n158w"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(56, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbvsh"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(64, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ts41"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(72, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj58p"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(80, 0, 8, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01xn5"]
+atlas = ExtResource("1_pt2xg")
+region = Rect2(88, 0, 8, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1gfk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh7wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7u8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ni56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osyut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oigmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_theio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc4qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n158w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbvsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ts41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj58p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01xn5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="tiki" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d1gfk")
+autoplay = "default"
+frame_progress = 0.723766
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("2_bg1m3")
+texture_scale = 0.2

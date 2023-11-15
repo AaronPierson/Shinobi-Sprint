@@ -18,7 +18,7 @@ func _on_area_2d_body_entered(body):
 		collected_timer.start()
 		animated_sprite_2d.play("Collected")
 		body.jump_count = 0
-		body.JUMP_VELOCITY = ORB_JUMP_VELOCITY
+		body.JUMP_VELOCIdTY = ORB_JUMP_VELOCITY
 
 func _on_collected_timer_timeout():
 	queue_free()

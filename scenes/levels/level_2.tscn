@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dac32esw85ldl"]
+[gd_scene load_steps=20 format=3 uid="uid://dac32esw85ldl"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_1mc1l"]
 [ext_resource type="Texture2D" uid="uid://by1cah0q7ttyx" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="2_tfmgt"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://qvx5tcdebrru" path="res://scenes/entities/enemy/goblin_bomber.tscn" id="8_ed6h6"]
 [ext_resource type="PackedScene" uid="uid://mlumxxkc5orw" path="res://scenes/entities/coin.tscn" id="10_qck46"]
 [ext_resource type="PackedScene" uid="uid://6qpdbl0jbn3q" path="res://scenes/entities/enemy/slime.tscn" id="11_kpwth"]
+[ext_resource type="PackedScene" uid="uid://beij3yxvwrivq" path="res://tiki.tscn" id="12_1p2sr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otmb2"]
 texture = ExtResource("2_tfmgt")
@@ -755,8 +756,7 @@ x_range = 50
 
 [node name="goblin bomber4" parent="Bomber" instance=ExtResource("8_ed6h6")]
 position = Vector2(1255, 104.035)
-x_range = 80
-y_range = 250
+x_range = 50
 
 [node name="Coins" type="Node2D" parent="."]
 
@@ -808,6 +808,59 @@ path_follow = NodePath("../../../Path2D/PathFollow2D")
 speed = 0.1
 
 [node name="Goblins" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[node name="lights" type="Node" parent="."]
+
+[node name="tiki" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(104, 148)
+
+[node name="tiki2" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(185, 164)
+
+[node name="tiki3" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(326, 100)
+
+[node name="tiki4" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(346, 182)
+
+[node name="tiki5" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(505, 116)
+
+[node name="tiki6" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(645, 148)
+
+[node name="tiki7" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(719, 182)
+
+[node name="tiki8" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(807, 132)
+
+[node name="tiki9" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(904, 132)
+
+[node name="tiki10" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(998, 101)
+
+[node name="tiki11" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(1142, 180)
+
+[node name="tiki12" parent="lights" instance=ExtResource("12_1p2sr")]
+z_index = -1
+position = Vector2(1240, 100)
 
 [connection signal="body_entered" from="diezone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
