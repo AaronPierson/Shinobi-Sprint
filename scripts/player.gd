@@ -10,7 +10,8 @@ enum State {
 
 var state = State.IDLE
 
-const SPEED = 100.0
+
+@export var SPEED = 100.0
 const JUMP_VELOCITY = -225.0
 const JUMP_HOLD_VELOCITY = -60.0
 

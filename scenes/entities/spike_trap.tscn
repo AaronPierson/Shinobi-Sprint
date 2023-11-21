@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjdpwixcd50ye"]
 
-[ext_resource type="Script" path="res://SpikeTrap.gd" id="1_vvosr"]
+[ext_resource type="Script" path="res://scenes/SpikeTrap.gd" id="1_vvosr"]
 [ext_resource type="Texture2D" uid="uid://qownt07g6tq2" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/spikes.png" id="2_g0ybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo7n"]

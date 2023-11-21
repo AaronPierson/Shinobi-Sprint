@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://qvx5tcdebrru" path="res://scenes/entities/enemy/goblin_bomber.tscn" id="8_ed6h6"]
 [ext_resource type="PackedScene" uid="uid://mlumxxkc5orw" path="res://scenes/entities/coin.tscn" id="10_qck46"]
 [ext_resource type="PackedScene" uid="uid://6qpdbl0jbn3q" path="res://scenes/entities/enemy/slime.tscn" id="11_kpwth"]
-[ext_resource type="PackedScene" uid="uid://beij3yxvwrivq" path="res://tiki.tscn" id="12_1p2sr"]
+[ext_resource type="PackedScene" uid="uid://beij3yxvwrivq" path="res://scenes/entities/tiki.tscn" id="12_1p2sr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otmb2"]
 texture = ExtResource("2_tfmgt")
@@ -757,6 +757,7 @@ x_range = 50
 [node name="goblin bomber4" parent="Bomber" instance=ExtResource("8_ed6h6")]
 position = Vector2(1255, 104.035)
 x_range = 50
+y_range = -200
 
 [node name="Coins" type="Node2D" parent="."]
 

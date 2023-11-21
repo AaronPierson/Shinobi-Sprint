@@ -55,7 +55,7 @@ editor_draw_drag_margin = true
 script = ExtResource("5_vfu6i")
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
-position = Vector2(-185, -15)
+position = Vector2(-200, -15)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbib78fb5u3g2"]
+
+[ext_resource type="Script" path="res://ui/Main Menu.gd" id="1_bb25x"]
+[ext_resource type="Texture2D" uid="uid://bhmjw3710icfs" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/background.png" id="1_be3t6"]
+[ext_resource type="Theme" uid="uid://qxltg0ijd8vm" path="res://ui/UiTheme.tres" id="3_nb16n"]
+[ext_resource type="Script" path="res://Godot Plugins/music/OvaniPlayer.gd" id="3_raxes"]
+[ext_resource type="AudioStream" uid="uid://c5vdf7p1xngg0" path="res://sounds/music/Victory (RT 3)/Chiptune Victory Intensity 1.wav" id="4_v6jhj"]
+[ext_resource type="AudioStream" uid="uid://bslqh4hmtoqwh" path="res://sounds/music/Victory (RT 3)/Chiptune Victory Intensity 2.wav" id="5_tpvhg"]
+[ext_resource type="AudioStream" uid="uid://dma2dykllih1w" path="res://sounds/music/Victory (RT 3)/Chiptune Victory main.wav" id="6_uhyrq"]
+[ext_resource type="AudioStream" uid="uid://bp7hc4tvkfb6r" path="res://sounds/music/Victory (RT 3)/Chiptune Victory cut 30.wav" id="7_7vu3x"]
+[ext_resource type="AudioStream" uid="uid://yx37i55jobnv" path="res://sounds/music/Victory (RT 3)/Chiptune Victory cut 60.wav" id="8_tvk1l"]
+[ext_resource type="Script" path="res://Godot Plugins/music/OvaniSong.gd" id="9_lhju2"]
+
+[sub_resource type="Resource" id="Resource_jdev2"]
+script = ExtResource("9_lhju2")
+Intensity1 = ExtResource("4_v6jhj")
+Intensity2 = ExtResource("5_tpvhg")
+Intensity3 = ExtResource("6_uhyrq")
+Loop30 = ExtResource("7_7vu3x")
+Loop60 = ExtResource("8_tvk1l")
+ReverbTail = 3.0
+SongMode = 0
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bb25x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_be3t6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -42.0
+offset_right = 23.5
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "      Main Menu      "
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath(".")
+focus_previous = NodePath("../Exit")
+theme = ExtResource("3_nb16n")
+text = "Start"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme = ExtResource("3_nb16n")
+text = "Quit"
+
+[node name="OvaniPlayer" type="Node" parent="."]
+script = ExtResource("3_raxes")
+QueuedSongs = Array[ExtResource("9_lhju2")]([SubResource("Resource_jdev2")])
+Intensity = 0.512
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

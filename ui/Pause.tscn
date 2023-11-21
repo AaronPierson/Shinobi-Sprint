@@ -61,6 +61,10 @@ text = "      Pause      "
 [node name="Resume" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath(".")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ol5cf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_sm0jy")
 

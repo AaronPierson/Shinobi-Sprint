@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://qvx5tcdebrru" path="res://scenes/entities/enemy/goblin_bomber.tscn" id="9_cnhlx"]
 [ext_resource type="PackedScene" uid="uid://mlumxxkc5orw" path="res://scenes/entities/coin.tscn" id="10_omin0"]
 [ext_resource type="PackedScene" uid="uid://6qpdbl0jbn3q" path="res://scenes/entities/enemy/slime.tscn" id="11_fej2n"]
-[ext_resource type="PackedScene" uid="uid://beij3yxvwrivq" path="res://tiki.tscn" id="12_4fk28"]
+[ext_resource type="PackedScene" uid="uid://beij3yxvwrivq" path="res://scenes/entities/tiki.tscn" id="12_4fk28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bj7u7"]
 size = Vector2(1416, 54)

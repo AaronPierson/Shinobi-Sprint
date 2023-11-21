@@ -85,12 +85,18 @@ func _on_level_changed(current_level_name):
 		"Level1":
 			next_level_name = 2
 			ovani_player.Intensity = 0
+			camera_2d.speed += 10
+			player.SPEED += 2.5
 		"Level2":
 			next_level_name = 3
 			ovani_player.Intensity = .5
+			camera_2d.speed += 10
+			player.SPEED += 2.5
 		"Level3":
 			next_level_name = 1
 			ovani_player.Intensity = 1
+			camera_2d.speed += 10
+			player.SPEED += 2.5
 		_:
 			return
 	load_level(levels[next_level_name])
