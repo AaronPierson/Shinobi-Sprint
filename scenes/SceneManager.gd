@@ -10,6 +10,7 @@ class_name SceneManager
 @onready var reset_level_timer = $Reset_Level_Timer
 
 signal toggle_paused(is_paused : bool)
+signal toggle_game_over(is_paused : bool)
 
 var levels = {
 	1: preload("res://scenes/levels/level_1.tscn"),
@@ -18,7 +19,6 @@ var levels = {
 	)
 }
 var current_level = null
-
 
 var game_paused : bool = false:
 	get:
@@ -102,13 +102,14 @@ func _on_level_changed(current_level_name):
 	load_level(levels[next_level_name])
 	
 func _on_player_player_died_reload():
-	reset_level_timer.start(2.5)
+#	reset_level_timer.start(2.5)
 	die_sfx.play()
 	camera_2d.speed = 0
 	ovani_player.Volume = -10
 	player.animation_player.play("die")
 	await player.animation_player.animation_finished
 	player.queue_free()
-
+	emit_signal("toggle_game_over")
+	
 func _on_reset_level_timer_timeout():
 	get_tree().reload_current_scene()

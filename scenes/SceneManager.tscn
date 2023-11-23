@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://brichvrpyddl7"]
+[gd_scene load_steps=18 format=3 uid="uid://brichvrpyddl7"]
 
 [ext_resource type="Script" path="res://scenes/SceneManager.gd" id="1_a5i4i"]
 [ext_resource type="PackedScene" uid="uid://dyuhogh5sfbgn" path="res://scenes/entities/player.tscn" id="2_xs6gk"]
 [ext_resource type="AudioStream" uid="uid://dma2dykllih1w" path="res://sounds/music/Victory (RT 3)/Chiptune Victory main.wav" id="3_343by"]
 [ext_resource type="PackedScene" uid="uid://dtmo0tfnfohp0" path="res://ui/HUD.tscn" id="4_g3rtf"]
+[ext_resource type="PackedScene" uid="uid://d2y3mkuoexahb" path="res://ui/game_over.tscn" id="5_uln8i"]
 [ext_resource type="Script" path="res://scenes/SSCamera.gd" id="5_vfu6i"]
 [ext_resource type="AudioStream" uid="uid://c104ebggsqnpy" path="res://sounds/sfx/Environments and Signals/Loser.wav" id="6_pdykc"]
 [ext_resource type="AudioStream" uid="uid://b7b8436rm12yl" path="res://sounds/sfx/Environments and Signals/Fanfare.wav" id="7_jepnu"]
@@ -43,6 +44,9 @@ process_mode = 1
 [node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("scene_manager") instance=ExtResource("8_gfukx")]
 scene_manager = NodePath("../..")
 
+[node name="GameOver" parent="CanvasLayer" node_paths=PackedStringArray("scene_manager") instance=ExtResource("5_uln8i")]
+scene_manager = NodePath("../..")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 1
 zoom = Vector2(3.5, 3.5)
@@ -80,6 +84,7 @@ script = ExtResource("9_1f2bx")
 QueuedSongs = Array[ExtResource("14_1tcj0")]([SubResource("Resource_jdev2")])
 Intensity = 0.512
 
+[connection signal="toggle_game_over" from="." to="CanvasLayer/GameOver" method="_on_scene_manger_toggle_game_over"]
 [connection signal="player_died_reload" from="Player" to="." method="_on_player_player_died_reload"]
 [connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Reset_Level_Timer" to="." method="_on_reset_level_timer_timeout"]
