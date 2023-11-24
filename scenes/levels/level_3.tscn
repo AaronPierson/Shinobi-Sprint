@@ -644,7 +644,6 @@ size = Vector2(46, 6)
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_20lkp")
-level_name = "Level2"
 
 [node name="diezone" type="Area2D" parent="."]
 collision_mask = 2
@@ -863,26 +862,22 @@ rotation = -1.55661
 
 [node name="WoodPlatforme" type="Node2D" parent="Node2D/Path2D/PathFollow2D" node_paths=PackedStringArray("path_follow")]
 rotation = -0.0174533
-scale = Vector2(1, 1)
 script = ExtResource("13_8shsm")
 path_follow = NodePath("..")
 speed = 0.1
 
 [node name="WoodSlabMiddle" type="Sprite2D" parent="Node2D/Path2D/PathFollow2D/WoodPlatforme"]
 rotation = 1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("14_7kebu")
 
 [node name="WoodSlabLeft" type="Sprite2D" parent="Node2D/Path2D/PathFollow2D/WoodPlatforme"]
 position = Vector2(0, -15)
 rotation = 1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("15_83mj7")
 
 [node name="WoodSlabRight" type="Sprite2D" parent="Node2D/Path2D/PathFollow2D/WoodPlatforme"]
 position = Vector2(0, 15)
 rotation = 1.5708
-scale = Vector2(1, 1)
 texture = ExtResource("13_4lfor")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Path2D/PathFollow2D/WoodPlatforme"]
@@ -890,7 +885,6 @@ texture = ExtResource("13_4lfor")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Path2D/PathFollow2D/WoodPlatforme/StaticBody2D"]
 position = Vector2(-1.52588e-05, 0.00689697)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_rigus")
 one_way_collision = true
 

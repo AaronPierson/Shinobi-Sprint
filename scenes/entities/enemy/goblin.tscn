@@ -1,13 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://cv681glpaopqi"]
+[gd_scene load_steps=30 format=3 uid="uid://cv681glpaopqi"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy/goblin.gd" id="1_7nil5"]
 [ext_resource type="Texture2D" uid="uid://mmb3ivbkajyk" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/goblin/goblin_attack_anim_strip_4.png" id="1_v16ms"]
 [ext_resource type="Texture2D" uid="uid://efl4gtlxfw3c" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/goblin/goblin_idle_anim_strip_4.png" id="2_hafh4"]
 [ext_resource type="Texture2D" uid="uid://2tvuw4m23qtg" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/goblin/goblin_death_anim_strip_6.png" id="3_nm08r"]
 [ext_resource type="Texture2D" uid="uid://bnd464iuvkf3u" path="res://assets/platformer_metroidvania asset pack v1.01/enemies sprites/goblin/goblin_run_anim_strip_6.png" id="4_mw8k5"]
-[ext_resource type="Script" path="res://scripts/States/State Machine.gd" id="7_r773y"]
-[ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="7_uiq60"]
-[ext_resource type="Script" path="res://scripts/States/EnemyFollow.gd" id="8_tltk8"]
 [ext_resource type="AudioStream" uid="uid://d4kygtid6l8h8" path="res://sounds/sfx/Cute/Toon/Toon Attack 001.wav" id="9_8482c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3oui3"]
@@ -177,6 +174,9 @@ animations = [{
 radius = 5.0
 height = 18.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rff8"]
+size = Vector2(14, 7)
+
 [node name="goblin" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_7nil5")
 
@@ -194,21 +194,36 @@ stream = ExtResource("9_8482c")
 position = Vector2(-3, 0)
 shape = SubResource("CapsuleShape2D_6mhab")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initail_state")]
-script = ExtResource("7_r773y")
-initail_state = NodePath("EnemyIdle")
-
-[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("7_uiq60")
-enemy = NodePath("../..")
-
-[node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("8_tltk8")
-enemy = NodePath("../..")
-
 [node name="RayCast2DGround" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(20, -40)
 
-[node name="RayCast2DWall" type="RayCast2D" parent="."]
-position = Vector2(-25, 0)
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(-3, 0)
 rotation = -1.5708
+exclude_parent = false
+target_position = Vector2(0, 20)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-3, 0)
+rotation = 1.5708
+exclude_parent = false
+target_position = Vector2(0, 20)
+
+[node name="Area2DSight" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DSight"]
+polygon = PackedVector2Array(40, 8, 0, 0, 40, -8)
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_5rff8")
+
+[connection signal="body_entered" from="Area2DSight" to="." method="_on_area_2d_sight_body_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

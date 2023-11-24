@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://6kciu8sn7rhp"]
+[gd_scene load_steps=36 format=3 uid="uid://6kciu8sn7rhp"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_nsx4g"]
 [ext_resource type="Texture2D" uid="uid://by1cah0q7ttyx" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="2_ev2b7"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c0oq6775gdmop" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/bigflowers_props.png" id="15_dlxc1"]
 [ext_resource type="Texture2D" uid="uid://40me7cjy0t1y" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/flowers_props.png" id="16_0s182"]
 [ext_resource type="Texture2D" uid="uid://btvfptb8wg80j" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/grass_props.png" id="17_je3jj"]
+[ext_resource type="PackedScene" uid="uid://cv681glpaopqi" path="res://scenes/entities/enemy/goblin.tscn" id="18_0tfey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otmb2"]
 texture = ExtResource("2_ev2b7")
@@ -1058,6 +1059,9 @@ rotation = 3.14159
 scale = Vector2(1.07792, 3.03026)
 path_follow = NodePath("..")
 speed = 0.08
+
+[node name="goblin" parent="." instance=ExtResource("18_0tfey")]
+position = Vector2(547, 183)
 
 [connection signal="body_entered" from="diezone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
