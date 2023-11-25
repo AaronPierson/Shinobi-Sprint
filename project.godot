@@ -18,10 +18,6 @@ boot_splash/image="res://assets/transparent.png"
 config/icon="res://assets/platformer_metroidvania asset pack v1.01/hud elements/lifes_icon.png"
 boot_splash/minimum_display_time=3000
 
-[autoload]
-
-Global="*res://Global.gd"
-
 [display]
 
 window/size/window_width_override=1920

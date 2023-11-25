@@ -15,8 +15,7 @@ signal toggle_game_over(is_paused : bool)
 var levels = {
 	1: preload("res://scenes/levels/level_1.tscn"),
 	2: preload("res://scenes/levels/level_2.tscn"),
-	3: preload(("res://scenes/levels/level_3.tscn")
-	)
+	3: preload(("res://scenes/levels/level_3.tscn")),
 }
 var current_level = null
 
@@ -30,7 +29,6 @@ var game_paused : bool = false:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.main_scene = self
 	load_level(levels[1])
 	
 func load_level(level):
@@ -80,23 +78,26 @@ func _on_level_changed(current_level_name):
 	#bug update ui with new health not working
 	hud._update_health(100)
 	player.Health = 100
-	print(current_level_name)
+	print("current level: ", current_level_name)
 	match current_level_name:
 		"Level1":
+			print("in level 1 swtich")
 			next_level_name = 2
 			ovani_player.Intensity = 0
-			camera_2d.speed += 10
-			player.SPEED += 2.5
+			camera_2d.speed += 5
+			player.SPEED += 1.5
 		"Level2":
+			print("in level 2 swtich")
 			next_level_name = 3
 			ovani_player.Intensity = .5
-			camera_2d.speed += 10
-			player.SPEED += 2.5
+			camera_2d.speed += 5
+			player.SPEED += 1.5
 		"Level3":
+			print("in level 3 swtich")
 			next_level_name = 1
 			ovani_player.Intensity = 1
-			camera_2d.speed += 10
-			player.SPEED += 2.5
+			camera_2d.speed += 5
+			player.SPEED += 1.5
 		_:
 			return
 	load_level(levels[next_level_name])

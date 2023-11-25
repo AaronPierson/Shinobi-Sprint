@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://dac32esw85ldl"]
+[gd_scene load_steps=21 format=3 uid="uid://dac32esw85ldl"]
 
-[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_1mc1l"]
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_kphrs"]
 [ext_resource type="Texture2D" uid="uid://by1cah0q7ttyx" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="2_tfmgt"]
 [ext_resource type="Texture2D" uid="uid://bgdfyxm2otp1t" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/door.png" id="3_gieye"]
 [ext_resource type="Texture2D" uid="uid://c7ak1myse6qud" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/bg_0.png" id="3_vmpua"]
 [ext_resource type="Texture2D" uid="uid://bya650vx82a7f" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/bg_1.png" id="4_x7k3w"]
+[ext_resource type="PackedScene" uid="uid://cv681glpaopqi" path="res://scenes/entities/enemy/goblin.tscn" id="4_y0gra"]
 [ext_resource type="Texture2D" uid="uid://bxofi2awl2xoy" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/bg_2.png" id="5_kmcku"]
 [ext_resource type="Texture2D" uid="uid://dx6ykrpddopba" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/fg_0.png" id="6_cwc7y"]
 [ext_resource type="Texture2D" uid="uid://bsfqq1f8iemc4" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/fg_1.png" id="7_ejtvd"]
@@ -631,12 +632,13 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_opbcu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 678.013, 109.09, 0, 0, 0, 0, 782.571, 106.059)
+"points": PackedVector2Array(0, 0, 0, 0, 678.013, 109.09, 0, 0, 0, 0, 782.571, 106.059, 0, 0, 0, 0, 678.013, 109.09)
 }
-point_count = 2
+point_count = 3
 
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_1mc1l")
+script = ExtResource("1_kphrs")
+level_name = "Level2"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_d72th")
@@ -689,6 +691,9 @@ shape = SubResource("RectangleShape2D_2gcks")
 
 [node name="Sprite2D" type="Sprite2D" parent="next_level"]
 texture = ExtResource("3_gieye")
+
+[node name="goblin" parent="." instance=ExtResource("4_y0gra")]
+position = Vector2(1327, 184)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -804,7 +809,7 @@ rotates = false
 [node name="slime" parent="Path2D2/PathFollow2D" node_paths=PackedStringArray("path_follow") instance=ExtResource("11_kpwth")]
 rotation = 3.14159
 scale = Vector2(1.07792, 3.03026)
-path_follow = NodePath("../../../Path2D/PathFollow2D")
+path_follow = NodePath("..")
 speed = 0.1
 
 [node name="Goblins" type="Node2D" parent="."]

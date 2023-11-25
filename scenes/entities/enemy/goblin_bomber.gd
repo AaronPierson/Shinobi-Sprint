@@ -21,7 +21,6 @@ func _on_Timer_timeout():
 
 func throw_projectile():
 	animated_sprite_2d.play("attack")
-	print('throw bomb')
 	var projectile = bomb.instantiate()
 	projectile.global_position = self.global_position
 	projectile.mass = 1  # Adjust as needed

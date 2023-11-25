@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://c35gvp4tlu1fw"]
+[gd_scene load_steps=26 format=3 uid="uid://c35gvp4tlu1fw"]
 
-[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_20lkp"]
+[ext_resource type="Script" path="res://scripts/levels.gd" id="1_tiwgc"]
 [ext_resource type="Texture2D" uid="uid://by1cah0q7ttyx" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/tileset.png" id="2_qcvi8"]
 [ext_resource type="Texture2D" uid="uid://bgdfyxm2otp1t" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/door.png" id="3_1yjpf"]
 [ext_resource type="Texture2D" uid="uid://c7ak1myse6qud" path="res://assets/platformer_metroidvania asset pack v1.01/tiles and background_foreground (new)/bg_0.png" id="4_748fh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scenes/levels/WoodPlatforme.gd" id="13_8shsm"]
 [ext_resource type="Texture2D" uid="uid://b6pywasxp80kl" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/wood_slab_middle.png" id="14_7kebu"]
 [ext_resource type="Texture2D" uid="uid://dtc6f5oroky3t" path="res://assets/platformer_metroidvania asset pack v1.01/miscellaneous sprites/wood_slab_left.png" id="15_83mj7"]
+[ext_resource type="PackedScene" uid="uid://cv681glpaopqi" path="res://scenes/entities/enemy/goblin.tscn" id="17_n7ekw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bj7u7"]
 size = Vector2(1416, 54)
@@ -643,7 +644,8 @@ point_count = 4
 size = Vector2(46, 6)
 
 [node name="Level3" type="Node2D"]
-script = ExtResource("1_20lkp")
+script = ExtResource("1_tiwgc")
+level_name = "Level3"
 
 [node name="diezone" type="Area2D" parent="."]
 collision_mask = 2
@@ -657,6 +659,7 @@ position = Vector2(63, 117)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="level_start"]
+z_index = 1
 position = Vector2(6, 1)
 shape = SubResource("RectangleShape2D_e7mwa")
 
@@ -667,6 +670,8 @@ texture = ExtResource("3_1yjpf")
 [node name="next_level" type="Area2D" parent="."]
 position = Vector2(1352, 180)
 collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="next_level"]
 position = Vector2(-0.5, 0.5)
@@ -887,6 +892,10 @@ position = Vector2(-1.52588e-05, 0.00689697)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_rigus")
 one_way_collision = true
+
+[node name="goblin" parent="." instance=ExtResource("17_n7ekw")]
+position = Vector2(552, 183)
+CHASE_SPEED = 60
 
 [connection signal="body_entered" from="diezone" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]
